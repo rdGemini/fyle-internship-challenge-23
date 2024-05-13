@@ -1,5 +1,57 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+<div class="container mx-auto">
+  <h1 class="mb-5 text-4xl">Github Repositories</h1>
+
+  <div class="flex justify-center items-center mb-3">
+    <div class="w-full md:w-1/2">
+      <div class="flex">
+        <input type="text" id="username" (keyup.enter)="fetchUserAndRepositories()" class="form-input rounded-l-lg" placeholder="Enter Github Username">
+        <button class="btn btn-primary rounded-r-lg" (click)="fetchUserAndRepositories()">View</button>
+      </div>
+    </div>
+  </div>
+
+  <app-loader *ngIf="loading"></app-loader>
+
+  <div id="userDetails"></div>
+  <app-user-details *ngIf="userDetails" [userDetails]="userDetails"></app-user-details>
+
+  <div class="flex justify-between items-center mb-3">
+    <div class="w-full md:w-1/2">
+      <div class="flex">
+        <input type="text" id="searchRepo" (keyup.enter)="searchRepositories()" class="form-input rounded-l-lg" placeholder="Search Repository" #searchRepoRef>
+        <button class="btn btn-success rounded-r-lg" (click)="searchRepositories()">Search</button>
+      </div>
+    </div>
+
+    <div class="md:w-1/4 text-right">
+      <label for="perPage" (keyup.enter)="fetchUserAndRepositories()">Max Repositories Per Page:</label>
+    </div>
+
+    <div class="md:w-1/4">
+      <select id="perPage" class="form-select">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="flex mb-3" id="repositories">
+    <div class="w-full md:w-1/2" id="column1"></div>
+    <div class="w-full md:w-1/2" id="column2"></div>
+  </div>
+  <app-repository-list *ngIf="repositories" [repositories]="repositories"></app-repository-list>
+
+  <div class="flex mb-3">
+    <div class="w-1/3">
+      <button class="btn btn-secondary mr-2" (click)="goToPage('prev')" id="prevPageBtn" [disabled]="currentPage === 1">Previous Page</button>
+    </div>
+    <div class="w-1/3 flex justify-center items-center">
+      <span id="currentPage" class="mr-2">Page {{ currentPage }}</span>
+    </div>
+    <div class="w-1/3 flex justify-end">
+      <button class="btn btn-secondary mr-2" (click)="goToPage('next')" id="nextPageBtn" [disabled]="totalRepositories < perPage">Next Page</button>
+    </div>
   </div>
 </div>

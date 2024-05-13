@@ -1,0 +1,35 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  @apply p-20 bg-gray-900 text-white;
+}
+
+h1 {
+  @apply text-center text-4xl font-bold mb-20;
+}
+
+label {
+  @apply text-lg text-white;
+}
+
+input, select {
+  @apply w-3/4 p-3 m-4 ml-10 bg-gray-300 text-gray-800 border border-gray-300 rounded;
+}
+
+button, .sharp-left-btn {
+  @apply h-12 mt-4 p-2 px-6 text-lg bg-blue-600 text-white border-none cursor-pointer;
+}
+
+button:hover {
+  @apply bg-blue-800;
+}
+
+.sharp-left-btn {
+  @apply mt-4 ml-0 rounded-none;
+}
+
+.loader {
+  @apply border-8 border-gray-200 border-solid border-t-blue-600 rounded-full w-12 h-12 animate-spin m-auto mt-20 hidden;
+}

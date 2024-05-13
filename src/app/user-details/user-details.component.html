@@ -1,0 +1,15 @@
+<div *ngIf="userDetails" class="container mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="flex items-center justify-center md:justify-end">
+      <img [src]="userDetails.avatar_url" alt="User Profile Image" class="w-32 h-32 rounded-full mb-3 md:mb-0">
+    </div>
+    <div class="flex flex-col">
+      <h3 class="text-2xl">{{ userDetails.name || 'Not available' }}</h3>
+      <p *ngIf="userDetails.bio" class="mb-2">{{ userDetails.bio }}</p>
+      <p class="mb-2"><strong>📍</strong> {{ userDetails.location || 'Not available' }}</p>
+      <p *ngIf="userDetails.twitter_username" class="mb-2"><i>Twitter:</i> <a [href]="'https://twitter.com/' + userDetails.twitter_username" target="_blank">{{ userDetails.twitter_username }}</a></p>
+      <p *ngIf="userDetails.blog" class="mb-2"><i>Blog:</i> <a [href]="userDetails.blog" target="_blank">{{ userDetails.blog }}</a></p>
+      <p><a [href]="userDetails.html_url" target="_blank">{{ userDetails.html_url }}</a></p>
+    </div>
+  </div>
+</div>

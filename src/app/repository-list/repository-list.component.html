@@ -1,0 +1,11 @@
+<div *ngIf="repositories && repositories.length > 0" class="row mb-3">
+  <div class="col-md-6" id="column1">
+    <div *ngFor="let repo of repositories; let i = index" class="bg-gray-900 p-4 mb-4 border border-gray-300 rounded">
+      <h3 class="text-lg font-semibold mb-2 text-white">{{ repo.name }}</h3>
+      <p class="text-sm text-gray-300 mb-2">{{ repo.description || 'No description available' }}</p>
+      <div *ngIf="repo.topics.length > 0" class="mb-2"><strong class="mr-2 text-blue-200">Topics:</strong>
+        <span *ngFor="let topic of repo.topics" class="bg-blue-500 text-blue-800 py-1 px-2 rounded mr-2">{{ topic }}</span>
+      </div>
+    </div>
+  </div>
+</div>
